@@ -15,12 +15,8 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('i18next_conv', 'Convert files using i18next-conv.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
-
+    var filecount = 0;
     var done = this.async();
-
-    grunt.log.writeln("HELLO FROM I18NEXT-CONV 5");
-
-
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
       // Concat specified files. 
@@ -39,11 +35,18 @@ module.exports = function(grunt) {
         }
       }).map(function(filepath) {
         //Convert files using i18next-conv
+        console.log("HELLO FROM HERE!");
+        filecount++;
         require('i18next-conv').process(f.domain, filepath, f.dest, {quiet: true}, function(err) {
+          filecount--;
           if (err) {
             console.log('\nfailed writing file\n\n'.red);
+            done(false);
           } else {
             console.log('\nfile written\n\n'.green);
+            if(filecount === 0) {
+              done();
+            }
           }
         });
       });
