@@ -15,6 +15,10 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('i18next_conv', 'Convert files using i18next-conv.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
+    var options = this.options({
+        domainCallback: false,
+    });
+
     var filecount = 0;
     var done = this.async();
     // Iterate over all specified file groups.
@@ -28,8 +32,13 @@ module.exports = function(grunt) {
           return false;
         } else {
           if(!f.domain) {
-            grunt.log.error('Domain must be specified for ' + filepath);
-            return false;
+               if( options.domainCallback && 'function' == typeof options.domainCallback ){
+                    f.domain = options.domainCallback( f );
+               }
+               if( !f.domain ){
+                    grunt.log.error('Domain must be specified for ' + filepath);
+                    return false;
+               }
           }
           return true;
         }
