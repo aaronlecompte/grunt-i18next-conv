@@ -25,7 +25,7 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "i18next-conv": "0.1.2"
+    "i18next-conv": "0.1.4"
   },
   "scripts": {
     "test": "grunt test"
