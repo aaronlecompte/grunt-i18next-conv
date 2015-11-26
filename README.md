@@ -48,8 +48,34 @@ grunt.initConfig({
 	  { dest: 'folder/fr_FR.json',
 		src: 'folder/fr_FR.po',
 		domain: 'fr'
-	  }	
+	  }
     ],
+  },
+})
+```
+
+### Options
+Options in your grunt task will be exposed to the [i18next-conv](https://github.com/i18next/i18next-gettext-converter) process.
+
+For example, to use a custom `keyseparator`:
+
+
+```js
+grunt.initConfig({
+  i18next_conv: {
+    files: [
+      {dest: 'folder/en_GB.json',
+     src: 'folder/en_GB.po',
+     domain: 'en',
+    },
+    { dest: 'folder/fr_FR.json',
+    src: 'folder/fr_FR.po',
+    domain: 'fr'
+    }
+    ],
+    options: {
+      keyseparator: '.'
+    },
   },
 })
 ```
