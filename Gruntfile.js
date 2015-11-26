@@ -30,22 +30,52 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     i18next_conv: {
-      default_options: {
+      default_options_json2po: {
         options: {
         },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        files: [
+          {
+            dest: 'tmp/default.po',
+            src: 'test/fixtures/json.json',
+            domain: 'en'
+          }
+        ],
       },
-      custom_options: {
+      default_options_po2json: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!',
         },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        files: [
+          {
+            dest: 'tmp/default.json',
+            src: 'test/fixtures/default.po',
+            domain: 'en'
+          }
+        ],
       },
+      custom_options_json2po: {
+        options: {
+          keyseparator: '.'
+        },
+        files: [
+          {
+            dest: 'tmp/custom.po',
+            src: 'test/fixtures/json.json',
+            domain: 'en'
+          }
+        ],
+      },
+      custom_options_po2json: {
+        options: {
+          keyseparator: '.'
+        },
+        files: [
+          {
+            dest: 'tmp/custom.json',
+            src: 'test/fixtures/custom.po',
+            domain: 'en'
+          }
+        ],
+      }
     },
 
     // Unit tests.

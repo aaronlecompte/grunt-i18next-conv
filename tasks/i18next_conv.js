@@ -46,13 +46,14 @@ module.exports = function(grunt) {
       }).map(function(filepath) {
         //Convert files using i18next-conv
         filecount++;
+        console.log(('Processing file: ' + filepath + ' -> ' + f.dest).yellow);
         require('i18next-conv').process(f.domain, filepath, f.dest, options, function(err) {
           filecount--;
           if (err) {
-            console.log(('Failed writing file: ' + filepath +'\n').red);
+            console.log(('Failed writing file: ' + f.dest +'\n').red);
             done(false);
           } else {
-            console.log(('File written: ' + filepath +'\n').green);
+            console.log(('File written: ' + f.dest +'\n').green);
             if(filecount === 0) {
               done();
             }
