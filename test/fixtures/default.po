@@ -1,0 +1,16 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: node-gettext\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid "singleKey"
+msgstr "singleValue"
+
+msgid "nestedKeys##firstKey"
+msgstr "firstValue"
+
+msgid "nestedKeys##secondKey"
+msgstr "secondValue"

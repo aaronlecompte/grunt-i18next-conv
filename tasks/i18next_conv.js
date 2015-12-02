@@ -17,13 +17,14 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
         domainCallback: false,
+        quiet: true,
     });
 
     var filecount = 0;
     var done = this.async();
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-      // Concat specified files. 
+      // Concat specified files.
       var src = f.src.filter(function(filepath) {
 
         // Warn on and remove invalid source files (if nonull was set).
@@ -32,7 +33,7 @@ module.exports = function(grunt) {
           return false;
         } else {
           if(!f.domain) {
-               if( options.domainCallback && 'function' == typeof options.domainCallback ){
+               if( options.domainCallback && 'function' === typeof options.domainCallback ){
                     f.domain = options.domainCallback( f );
                }
                if( !f.domain ){
@@ -44,15 +45,15 @@ module.exports = function(grunt) {
         }
       }).map(function(filepath) {
         //Convert files using i18next-conv
-        console.log("HELLO FROM HERE!");
         filecount++;
-        require('i18next-conv').process(f.domain, filepath, f.dest, {quiet: true}, function(err) {
+        console.log(('Processing file: ' + filepath + ' -> ' + f.dest).yellow);
+        require('i18next-conv').process(f.domain, filepath, f.dest, options, function(err) {
           filecount--;
           if (err) {
-            console.log('\nfailed writing file\n\n'.red);
+            console.log(('Failed writing file: ' + f.dest +'\n').red);
             done(false);
           } else {
-            console.log('\nfile written\n\n'.green);
+            console.log(('File written: ' + f.dest +'\n').green);
             if(filecount === 0) {
               done();
             }

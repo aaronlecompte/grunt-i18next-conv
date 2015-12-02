@@ -27,21 +27,39 @@ exports.i18next_conv = {
     // setup here if necessary
     done();
   },
-  default_options: function(test) {
+  default_options_json: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    var actual = grunt.file.read('tmp/default.json');
+    var expected = grunt.file.read('test/expected/json.json');
+    test.equal(actual, expected, 'should generate expected JSON from PO file given default options');
 
     test.done();
   },
-  custom_options: function(test) {
+  default_options_po: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var actual = grunt.file.read('tmp/default.po');
+    var expected = grunt.file.read('test/expected/default.po');
+    test.equal(actual, expected, 'should generate expected PO file from JSON given default options');
+
+    test.done();
+  },
+  custom_options_json: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/custom.json');
+    var expected = grunt.file.read('test/expected/json.json');
+    test.equal(actual, expected, 'should generate expected JSON from PO file given custom options');
+
+    test.done();
+  },
+  custom_options_po: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/custom.po');
+    var expected = grunt.file.read('test/expected/custom.po');
+    test.equal(actual, expected, 'should generate expected PO file from JSON given custom options');
 
     test.done();
   },

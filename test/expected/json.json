@@ -1,0 +1,7 @@
+{
+    "singleKey": "singleValue",
+    "nestedKeys": {
+        "firstKey": "firstValue",
+        "secondKey": "secondValue"
+    }
+}
