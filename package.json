@@ -1,7 +1,7 @@
 {
   "name": "grunt-i18next-conv",
   "description": "Use i18next-conv to convert translation files.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "https://github.com/aaronlecompte/grunt-i18next-conv",
   "author": {
     "name": "Aaron Le Compte",
