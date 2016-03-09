@@ -32,6 +32,7 @@ module.exports = function(grunt) {
     i18next_conv: {
       default_options_json2po: {
         options: {
+          noDate: true
         },
         files: [
           {
@@ -54,7 +55,8 @@ module.exports = function(grunt) {
       },
       custom_options_json2po: {
         options: {
-          keyseparator: '.'
+          keyseparator: '.',
+          noDate: true
         },
         files: [
           {
