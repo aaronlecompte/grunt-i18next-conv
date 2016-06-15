@@ -17,6 +17,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
         domainCallback: false,
+        destCallback: false,
         quiet: true,
     });
 
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
         } else {
           if(!f.domain) {
                if( options.domainCallback && 'function' === typeof options.domainCallback ){
-                    f.domain = options.domainCallback( f );
+                    f.domain = options.domainCallback( f, filepath );
                }
                if( !f.domain ){
                     grunt.log.error('Domain must be specified for ' + filepath);
@@ -44,16 +45,20 @@ module.exports = function(grunt) {
           return true;
         }
       }).map(function(filepath) {
+        var dest = f.dest;
         //Convert files using i18next-conv
+        if (!dest && options.destCallback && typeof options.destCallback === 'function') {
+          dest = options.destCallback(f, filepath);
+        }
         filecount++;
-        console.log(('Processing file: ' + filepath + ' -> ' + f.dest).yellow);
-        require('i18next-conv').process(f.domain, filepath, f.dest, options, function(err) {
+        console.log(('Processing file: ' + filepath + ' -> ' + dest).yellow);
+        require('i18next-conv').process(f.domain, filepath, dest, options, function(err) {
           filecount--;
           if (err) {
-            console.log(('Failed writing file: ' + f.dest +'\n').red);
+            console.log(('Failed writing file: ' + dest +'\n').red);
             done(false);
           } else {
-            console.log(('File written: ' + f.dest +'\n').green);
+            console.log(('File written: ' + dest +'\n').green);
             if(filecount === 0) {
               done();
             }

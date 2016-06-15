@@ -7,6 +7,7 @@
  */
 
 'use strict';
+var path = require('path');
 
 module.exports = function(grunt) {
 
@@ -77,6 +78,24 @@ module.exports = function(grunt) {
             domain: 'en'
           }
         ],
+      },
+      autofill_dest_po2json: {
+        options: {
+          destCallback: function(f,fn) {return path.join("tmp", path.basename(fn, path.extname(fn)) + '.json')},
+          domainCallback: function(f,fn) {return "en"}
+        },
+        files: [
+          {src: 'test/fixtures/*.po'}
+        ]
+      },
+      autofill_dest_json2po: {
+        options: {
+          destCallback: function(f,fn) {return path.join("tmp", path.basename(fn, path.extname(fn)) + '.po')},
+          domainCallback: function(f,fn) {return "en"}
+        },
+        files: [
+          {src: 'test/fixtures/*.json'}
+        ]
       }
     },
 
