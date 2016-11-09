@@ -1,6 +1,8 @@
-# grunt-i18next-conv
+# ya-grunt-i18next-conv
 
 > Use i18next-conv to convert translation files.
+
+This is a fork of grunt-i18next-conv which developed by Aaron Le Compte (https://github.com/aaronlecompte/grunt-i18next-conv)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
