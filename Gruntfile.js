@@ -81,7 +81,7 @@ module.exports = function(grunt) {
       },
       autofill_dest_po2json: {
         options: {
-          destCallback: function(f,fn) {return path.join("tmp", path.basename(fn, path.extname(fn)) + '.json')},
+          destCallback: function(f,fn) {return path.join("tmp", "autofill_" + path.basename(fn, path.extname(fn)) + '.json')},
           domainCallback: function(f,fn) {return "en"}
         },
         files: [
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
       },
       autofill_dest_json2po: {
         options: {
-          destCallback: function(f,fn) {return path.join("tmp", path.basename(fn, path.extname(fn)) + '.po')},
+          destCallback: function(f,fn) {return path.join("tmp", "autofill_" + path.basename(fn, path.extname(fn)) + '.po')},
           domainCallback: function(f,fn) {return "en"}
         },
         files: [
