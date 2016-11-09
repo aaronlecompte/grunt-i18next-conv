@@ -1,23 +1,23 @@
 {
-  "name": "grunt-i18next-conv",
+  "name": "ya-grunt-i18next-conv",
   "description": "Use i18next-conv to convert translation files.",
-  "version": "0.1.8",
-  "homepage": "https://github.com/aaronlecompte/grunt-i18next-conv",
+  "version": "0.2.0",
+  "homepage": "https://github.com/tagoh/grunt-i18next-conv",
   "author": {
-    "name": "Aaron Le Compte",
-    "email": "lecompte.aaron@gmail.com"
+    "name": "Akira TAGOH",
+    "email": "akira@tagoh.org"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/aaronlecompte/grunt-i18next-conv.git"
+    "url": "git://github.com/tagoh/grunt-i18next-conv.git"
   },
   "bugs": {
-    "url": "https://github.com/aaronlecompte/grunt-i18next-conv/issues"
+    "url": "https://github.com/tagoh/grunt-i18next-conv/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/aaronlecompte/grunt-i18next-conv/blob/master/LICENSE-MIT"
+      "url": "https://github.com/tagoh/grunt-i18next-conv/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
